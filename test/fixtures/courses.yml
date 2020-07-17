@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  name: MyString
+  description: MyString
+  weight: 1
+  portion: 1
+  final_price: 1
+  weight_ratio: 1
+  portion_ratio: 1
+  price_ratio: 9.99
+
+two:
+  type: 
+  name: MyString
+  description: MyString
+  weight: 1
+  portion: 1
+  final_price: 1
+  weight_ratio: 1
+  portion_ratio: 1
+  price_ratio: 9.99
