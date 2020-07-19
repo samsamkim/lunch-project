@@ -1,3 +1,6 @@
 <h3> Create a New Course </h3>
 
-<%= render 'form' %>
+
+<%= form_with model: @course, url: courses_path do |f| %>
+  <%= render 'form_content', f: f %>
+<% end %>

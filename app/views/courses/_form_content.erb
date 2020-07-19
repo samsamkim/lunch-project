@@ -1,0 +1,50 @@
+<div class='form-group'>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+</div>
+
+<div class='form-group'>
+  <%= f.label :description %>
+  <%= f.text_field :description, class: 'form-control' %>
+</div>
+
+<div class='form-group'>
+  <%= f.label :category, value: 'Choose a category for the course' %>
+  <%= f.select(:category_id, Category.all.collect { |c| [c.name, c.id] }, {}, {class: 'form-control'}) %>
+</div>
+
+<div class='form-group'>
+  <%= f.label :type %>
+  <%= f.select(:type, [['Weight-based', 'WeightBased'], ['Portion-based', 'PortionBased']], {}, {class: 'form-control type-dropdown'}) %>
+</div>
+
+<div class='form-group weight-group'>
+  <%= f.label :weight %>
+  <%= f.number_field :weight, class: 'form-control' %>
+</div>
+
+<div class='form-group portion-group d-none'>
+  <%= f.label :portion %>
+  <%= f.number_field :portion, class: 'form-control' %>
+</div>
+
+<div class='form-group weight-group'>
+  <%= f.label :weight_ratio, value: 'Weight Ratio (in grams)' %>
+  <p class='font-weight-light'> Create a ratio to calculate the final cost. Define the weight part of the ratio here and the price part below (e.g. 10 g here and $20 below for a ratio of 10:20 or $2/g)<p>
+  <%= f.number_field :weight_ratio, class: 'form-control' %>
+</div>
+
+<div class='form-group portion-group d-none'>
+  <%= f.label :portion_ratio %>
+  <p class='font-weight-light'> Create a ratio to calculate the final cost. Define the portion part of the ratio here and the price part below (e.g. 10 portions here and $20 below for a ratio of 10:20 or $2/portion) <p>
+  <%= f.number_field :portion_ratio, class: 'form-control' %>
+</div>
+
+<div class='form-group'>
+  <%= f.label :price_ratio %>
+  <p class='font-weight-light'> Set how much money it costs for the above defined weight/portion <p>
+  <%= f.number_field :price_ratio, class: 'form-control' %>
+</div>
+
+<%= f.submit 'Save', class: 'btn btn-primary' %>
+

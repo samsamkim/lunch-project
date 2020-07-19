@@ -1,0 +1,6 @@
+<h3> Create a New Category </h3>
+
+
+<%= form_with model: @category, url: categories_path do |f| %>
+  <%= render 'form_content', f: f %>
+<% end %>

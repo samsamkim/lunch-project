@@ -1,0 +1,5 @@
+<h3> Edit a Category </h3>
+
+<%= form_with model: @course, url: category_path, method: :patch do |f| %>
+  <%= render 'form_content', f: f %>
+<% end %>

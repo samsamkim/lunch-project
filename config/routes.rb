@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   authenticate :admin do
-    resources :courses, only: [:new, :create, :edit, :update, :destroy]
+    get '/admins', to: 'admins#index'
+    resources :courses, except: [:show]
+    resources :categories, except: [:show]
   end
-  resources :courses, only: [:index, :show]
 
 end

@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   def index
-    @courses = Course.all
+    @courses = Course.includes(:category).all
   end
 
   def new
@@ -19,16 +19,19 @@ class CoursesController < ApplicationController
 
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
-
+    if @course.update(course_params)
+      redirect_to courses_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
-
+    @course.destroy
+    redirect_to courses_path
   end
 
 
@@ -38,19 +41,13 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
   end
 
-  # def set_type
-  #   case params[:course][:type]
-  #   when 'WeightBased'
-  #     'weight_based'
-  #   when 'PortionBased'
-  #     'portion_based'
-  #   end
-  #   debugger
-  # end
-
   def course_params
+    if params.has_key? :weight_based
+      params[:course] = params.delete :weight_based
+    elsif params.has_key? :portion_based
+      params[:course] = params.delete :portion_based
+    end
     params.require(:course).permit(:type, :name, :description, :weight, :portion, :final_price, :weight_ratio, :portion_ratio, :price_ratio, :category_id, :daily_menu_id)
   end
-
 
 end

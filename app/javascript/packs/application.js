@@ -18,14 +18,21 @@ require('jquery')
 // const imagePath = (name) => images(name, true)
 
 $( document ).on('turbolinks:load', function() {
-  $('#type').change(function(){
 
-    if ($(this).val() === 'PortionBased') {
-      $('.weight-ratio-group').addClass('d-none');
-      $('.portion-ratio-group').removeClass('d-none');
+  displayWeightOrPortionFields();
+
+  $('.type-dropdown').change(function(){
+    displayWeightOrPortionFields();
+  });
+
+  function displayWeightOrPortionFields() {
+    if ($('.type-dropdown').val() === 'PortionBased') {
+      $('.weight-group').addClass('d-none');
+      $('.portion-group').removeClass('d-none');
     } else {
-      $('.weight-ratio-group').removeClass('d-none');
-      $('.portion-ratio-group').addClass('d-none');
-    }
-  })
-})
+      $('.weight-group').removeClass('d-none');
+      $('.portion-group').addClass('d-none');
+    };  
+  };
+
+});

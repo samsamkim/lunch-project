@@ -1,0 +1,21 @@
+<div class='p-3'>
+  <%= link_to 'New category', new_category_path, class: 'btn btn-outline-primary' %>
+</div>
+<div class='container-fluid'>
+  <div class='row'>
+    <% @categories.each do |category| %>
+
+      <div class='card col-4'>
+        <div class='card-body'>
+          <h5 class='card-title'><%= category.name %></h5>
+          <div class='card-text'>
+            <p>Courses: <%= category.courses.map{ |x| x.name}.join(", ") %> </p>
+            <%= link_to 'Edit category', edit_category_path(category) %>
+            <%= link_to 'Delete category', category_path(category), method: :delete %>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>

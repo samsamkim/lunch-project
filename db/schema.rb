@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_17_214415) do
+ActiveRecord::Schema.define(version: 2020_07_17_225135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2020_07_17_214415) do
     t.integer "final_price"
     t.integer "weight_ratio"
     t.integer "portion_ratio"
-    t.decimal "price_ratio", precision: 5, scale: 4
+    t.float "price_ratio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id", null: false

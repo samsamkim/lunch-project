@@ -1,3 +1,5 @@
 <h3> Edit a Course </h3>
 
-<%= render 'form' %>
+<%= form_with model: @course, url: course_path, method: :patch do |f| %>
+  <%= render 'form_content', f: f %>
+<% end %>

@@ -8,12 +8,12 @@ class Course < ApplicationRecord
   validates :name, presence: true
   validates :price_ratio, presence: true
 
-  before_create :calculate_final_price
+  before_destroy :check_for_menu
 
-  def calculate_final_price
-    self.final_price = 5 if self.type === 'WeightBased'
-    self.final_price 10 if self.type === 'PortionBased'
+  private
+
+  def check_for_menu
+    raise 'You cannot destroy this Course as it is included in a daily menu' if self.daily_menu.present?
   end
-
 
 end
