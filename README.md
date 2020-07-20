@@ -1,47 +1,26 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-
-
 Simple lunch app project. Built using Ruby 2.6.5 and Rails 6.0.3.2.
 
-Demo app can be found here: 
+Demo app can be found here: https://arcane-gorge-03011.herokuapp.com/admins/sign_in
+
+Please use admin credentials to access admin actions
+email: admin@admin.com
+password: admin
 
 To run locally, first create the database:
 
-rails db:create
+  - rails db:create
 
-Then run the migrations:
+Then run the migrations and seeds:
 
-rails db:migrate
+  - rails db:migrate
+
+  - rails db:seed
 
 And bundle install:
 
-bundle install
+  - bundle install
 
+Please visit localhost:3000/admins/sign_in to sign in first. Only admin features are available.
 
 
 Details on the lunch project app:
