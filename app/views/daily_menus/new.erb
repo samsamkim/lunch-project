@@ -1,0 +1,6 @@
+<h3> Create a New Daily Menu </h3>
+
+
+<%= form_with model: @daily_menu, url: daily_menus_path do |f| %>
+  <%= render 'form_content', f: f %>
+<% end %>

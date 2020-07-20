@@ -1,0 +1,5 @@
+<h3> Edit a Daily Menu </h3>
+
+<%= form_with model: @daily_menu, url: daily_menu_path, method: :patch do |f| %>
+  <%= render 'form_content', f: f %>
+<% end %>

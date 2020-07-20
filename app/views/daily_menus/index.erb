@@ -1,0 +1,25 @@
+<div class='p-3'>
+  <%= link_to 'New Daily Menu', new_daily_menu_path, class: 'btn btn-outline-primary' %>
+</div>
+<div class='container-fluid'>
+  <div class='row'>
+    <% @daily_menus.each do |daily_menu| %>
+
+      <div class='card col-4'>
+        <div class='card-body'>
+          <h5 class='card-title'><%= daily_menu.date %></h5>
+          <div class='card-text'>
+            <div>Courses:</div>
+            <% daily_menu.courses.each do |course| %>
+              <p><%= course.name %> - <%= course.category.name %></p>
+            <% end %>
+            <p>Price: $<%= daily_menu.price %> </p>
+            <%= link_to 'Edit daily_menu', edit_daily_menu_path(daily_menu) %>
+            <%= link_to 'Delete daily_menu', daily_menu_path(daily_menu), method: :delete %>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>

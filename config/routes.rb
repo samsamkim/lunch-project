@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get '/admins', to: 'admins#index'
     resources :courses, except: [:show]
     resources :categories, except: [:show]
+    resources :daily_menus, except: [:show]
   end
 
 end

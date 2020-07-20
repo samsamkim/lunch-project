@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_17_225135) do
+ActiveRecord::Schema.define(version: 2020_07_19_023553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,9 +49,14 @@ ActiveRecord::Schema.define(version: 2020_07_17_225135) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id", null: false
-    t.bigint "daily_menu_id"
     t.index ["category_id"], name: "index_courses_on_category_id"
-    t.index ["daily_menu_id"], name: "index_courses_on_daily_menu_id"
+  end
+
+  create_table "courses_daily_menus", id: false, force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.bigint "daily_menu_id", null: false
+    t.index ["course_id", "daily_menu_id"], name: "index_courses_daily_menus_on_course_id_and_daily_menu_id"
+    t.index ["daily_menu_id", "course_id"], name: "index_courses_daily_menus_on_daily_menu_id_and_course_id"
   end
 
   create_table "daily_menus", force: :cascade do |t|
@@ -74,5 +79,4 @@ ActiveRecord::Schema.define(version: 2020_07_17_225135) do
   end
 
   add_foreign_key "courses", "categories"
-  add_foreign_key "courses", "daily_menus"
 end

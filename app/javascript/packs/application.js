@@ -9,14 +9,6 @@ require("@rails/activestorage").start()
 require("channels")
 require('jquery')
 
-
-// Uncomment to copy all static images under ../images to the output folder and reference
-// them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
-// or the `imagePath` JavaScript helper below.
-//
-// const images = require.context('../images', true)
-// const imagePath = (name) => images(name, true)
-
 $( document ).on('turbolinks:load', function() {
 
   displayWeightOrPortionFields();
@@ -25,6 +17,7 @@ $( document ).on('turbolinks:load', function() {
     displayWeightOrPortionFields();
   });
 
+  // Switch between showing portion and weight fields
   function displayWeightOrPortionFields() {
     if ($('.type-dropdown').val() === 'PortionBased') {
       $('.weight-group').addClass('d-none');
@@ -34,5 +27,10 @@ $( document ).on('turbolinks:load', function() {
       $('.portion-group').addClass('d-none');
     };  
   };
+
+  // Show suggested price for chosen course during daily menu creation
+  $('.daily-menu-courses-dropdown').change(function(){
+    $('#dropdown-' + $(this).data('category-id')).text($(this).val());
+  });
 
 });
