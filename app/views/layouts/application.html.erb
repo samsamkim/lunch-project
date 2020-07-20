@@ -14,6 +14,10 @@
   <body>
 
     <%= yield %>
+    <% if current_admin %>
+      <%= link_to 'Back to admin dashboard', admins_path, class: 'btn btn-outline-primary mt-5 mx-3' %>
+    <% end %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 

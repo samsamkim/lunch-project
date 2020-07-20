@@ -19,7 +19,7 @@
 </div>
 
 <div class='form-group weight-group'>
-  <%= f.label :weight %>
+  <%= f.label :weight, value: 'Weight in grams' %>
   <%= f.number_field :weight, class: 'form-control' %>
 </div>
 
@@ -42,7 +42,7 @@
 
 <div class='form-group'>
   <%= f.label :price_ratio %>
-  <p class='font-weight-light'> Set how much money it costs for the above defined weight/portion <p>
+  <p class='font-weight-light'> Set how much money it costs for the above defined weight/portion (in $) <p>
   <%= f.number_field :price_ratio, class: 'form-control' %>
 </div>
 

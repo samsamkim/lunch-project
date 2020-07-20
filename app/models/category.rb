@@ -6,9 +6,10 @@ class Category < ApplicationRecord
   private
 
   def check_courses
-    return true if self.courses.empty?
-    errors.add :courses, "Cannot delete booking with payments"
-    throw(:abort)
+    raise 'You cannot destroy this Category as there are courses existing in it' if self.courses.present?
+    # return true if self.courses.empty?
+    # errors.add :courses, "Cannot delete booking with payments"
+    # throw(:abort)
   end
 
 end

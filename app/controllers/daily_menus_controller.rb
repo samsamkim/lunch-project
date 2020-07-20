@@ -1,6 +1,7 @@
 class DailyMenusController < ApplicationController
 
-  before_action :set_daily_menu, only: [:show, :edit, :update, :destroy]
+  before_action :set_daily_menu, only: [:edit, :update, :destroy]
+  before_action :set_categories, only: [:new, :create, :edit]
 
   def index
     @daily_menus = DailyMenu.includes(:courses, {courses: :category}).all
@@ -8,11 +9,9 @@ class DailyMenusController < ApplicationController
 
   def new
     @daily_menu = DailyMenu.new
-    @categories = Category.includes(:courses).all
   end
 
   def create
-    @categories = Category.includes(:courses).all
     @daily_menu = DailyMenu.new(daily_menu_params)
     if @daily_menu.save
       redirect_to daily_menus_path
@@ -39,6 +38,10 @@ class DailyMenusController < ApplicationController
 
 
   private
+
+  def set_categories
+    @categories = Category.includes(:courses).all
+  end
 
   def set_daily_menu
     @daily_menu = DailyMenu.find(params[:id])
