@@ -4,15 +4,21 @@
 
   <div class='row'>
     <div class='col-4'>
-      <div>Manage courses</div>
-      <%= link_to 'Create a course', new_course_path %>
-      <%= link_to 'View courses', courses_path %>
-    </div>
-    <div class='col-4'>
       <div>Manage categories</div>
       <%= link_to 'Create a category', new_category_path %>
       <%= link_to 'View categories', categories_path %>
     </div>
+    <div class='col-4'>
+      <div>Manage courses</div>
+      <% if no_categories %>
+        Please create a category first
+      <% end %>
+      <% unless no_categories %>
+        <%= link_to 'Create a course', new_course_path %>
+        <%= link_to 'View courses', courses_path %>
+      <% end %>
+    </div>
+
     <div class='col-4'>
       <div>Manage daily menu</div>
       <%= link_to 'Create a daily menu', new_daily_menu_path %>
