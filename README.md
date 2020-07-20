@@ -1,6 +1,7 @@
 Simple lunch app project. Built using Ruby 2.6.5 and Rails 6.0.3.2.
 
 Demo app can be found here: https://arcane-gorge-03011.herokuapp.com/admins/sign_in
+Admin features can be found at https://arcane-gorge-03011.herokuapp.com/admins
 
 Please use admin credentials to access admin actions
 email: admin@admin.com
@@ -20,7 +21,7 @@ And bundle install:
 
   - bundle install
 
-Please visit localhost:3000/admins/sign_in to sign in first. Only admin features are available.
+Please visit localhost:3000/admins as only admin features are available.
 
 
 Details on the lunch project app:
