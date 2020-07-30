@@ -15,9 +15,8 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to categories_path
     else
-      render 'new'
+      redirect_to new_category_path, flash: { alert: @category.errors.full_messages.join(', ') }
     end
-
   end
 
   def edit; end
@@ -26,7 +25,7 @@ class CategoriesController < ApplicationController
     if @category.update(category_params)
       redirect_to categories_path
     else
-      render 'edit'
+      redirect_to edit_category_path, flash: { alert: @category.errors.full_messages.join(', ') }
     end
   end
 
@@ -35,7 +34,10 @@ class CategoriesController < ApplicationController
     redirect_to categories_path
   end
 
-
+  rescue_from 'Category::StandardError' do |exception|
+    redirect_to categories_path, alert: exception.message
+  end
+  
   private
 
   def set_category

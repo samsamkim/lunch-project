@@ -9,11 +9,13 @@
         <div class='card-body'>
           <h5 class='card-title'><%= daily_menu.date %></h5>
           <div class='card-text'>
-            <div>Courses:</div>
+            <div class='mb-3'>Courses:</div>
             <% daily_menu.courses.each do |course| %>
-              <p><%= course.name %> - <%= course.category.name %></p>
+              <div class='border rounded p-3 mb-3'>
+                <p><%= course.name %> - <%= course.category.name %></p>
+                <p>Price: $<%= course.final_price %></p>
+              </div>
             <% end %>
-            <p>Price: $<%= daily_menu.price %> </p>
             <%= link_to 'Edit daily_menu', edit_daily_menu_path(daily_menu) %>
             <%= link_to 'Delete daily_menu', daily_menu_path(daily_menu), method: :delete %>
           </div>

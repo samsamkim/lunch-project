@@ -13,7 +13,7 @@ class Course < ApplicationRecord
   private
 
   def check_for_menu
-    raise 'You cannot destroy this Course as it is included in a daily menu' if self.daily_menu.present?
+    raise 'You cannot destroy this Course as it is included in a daily menu' if self.daily_menus.present?
   end
 
 end

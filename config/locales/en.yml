@@ -31,3 +31,10 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        daily_menu:
+          attributes:
+            date:
+              blank: "can't be blank and must be in YYYY-MM-DD format"

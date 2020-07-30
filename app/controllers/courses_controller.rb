@@ -14,9 +14,8 @@ class CoursesController < ApplicationController
     if @course.save
       redirect_to courses_path
     else
-      render 'new'
+      redirect_to new_course_path, flash: { alert: @course.errors.full_messages.join(', ') }
     end
-
   end
 
   def edit; end
@@ -25,7 +24,7 @@ class CoursesController < ApplicationController
     if @course.update(course_params)
       redirect_to courses_path
     else
-      render 'edit'
+      redirect_to edit_course_path, flash: { alert: @course.errors.full_messages.join(', ') }
     end
   end
 
@@ -34,6 +33,9 @@ class CoursesController < ApplicationController
     redirect_to courses_path
   end
 
+  rescue_from 'Course::StandardError' do |exception|
+    redirect_to courses_path, alert: exception.message
+  end
 
   private
 

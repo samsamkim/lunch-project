@@ -16,9 +16,8 @@ class DailyMenusController < ApplicationController
     if @daily_menu.save
       redirect_to daily_menus_path
     else
-      render 'new'
+      redirect_to new_daily_menu_path, flash: { alert: @daily_menu.errors.full_messages.join(', ') }
     end
-
   end
 
   def edit; end
@@ -27,7 +26,7 @@ class DailyMenusController < ApplicationController
     if @daily_menu.update(daily_menu_params)
       redirect_to daily_menus_path
     else
-      render 'edit'
+      redirect_to edit_daily_menu_path, flash: { alert: @daily_menu.errors.full_messages.join(', ') }
     end
   end
 
