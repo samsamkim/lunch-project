@@ -37,7 +37,7 @@ class CategoriesController < ApplicationController
   rescue_from 'Category::StandardError' do |exception|
     redirect_to categories_path, alert: exception.message
   end
-  
+
   private
 
   def set_category

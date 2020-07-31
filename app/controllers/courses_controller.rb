@@ -7,6 +7,8 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new
+    @course.build_measurement
+
   end
 
   def create
@@ -18,7 +20,9 @@ class CoursesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @course.build_measurement if @course.build_measurement.nil?
+  end
 
   def update
     if @course.update(course_params)
@@ -44,12 +48,12 @@ class CoursesController < ApplicationController
   end
 
   def course_params
-    if params.has_key? :weight_based
-      params[:course] = params.delete :weight_based
+    if params.has_key? :measurement_based
+      params[:course] = params.delete :measurement_based
     elsif params.has_key? :portion_based
       params[:course] = params.delete :portion_based
     end
-    params.require(:course).permit(:type, :name, :description, :weight, :portion, :final_price, :weight_ratio, :portion_ratio, :price_ratio, :category_id, :daily_menu_id)
+    params.require(:course).permit(:type, :name, :description, :weight, :category_id, :daily_menu_id, measurement_attributes: [:name, :unit, :quantity])
   end
 
 end

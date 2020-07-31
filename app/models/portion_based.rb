@@ -1,13 +1,13 @@
 class PortionBased < Course
-  validates :portion_ratio, presence: true
-  validates :portion, presence: true
+  # validates :portion_ratio, presence: true
+  # validates :portion, presence: true
 
-  before_save :calculate_final_price
+  # before_save :calculate_final_price
 
   private
 
-  def calculate_final_price
-    self.final_price = self.portion * (self.price_ratio / self.portion_ratio)
-  end
+  # def calculate_final_price
+  #   self.final_price = self.portion * (self.price_ratio / self.portion_ratio)
+  # end
 
 end
