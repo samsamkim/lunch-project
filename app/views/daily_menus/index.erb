@@ -13,7 +13,13 @@
             <% daily_menu.courses.each do |course| %>
               <div class='border rounded p-3 mb-3'>
                 <p><%= course.name %> - <%= course.category.name %></p>
-                <p>Price: $<%= course.final_price %></p>
+                <p>Price: $<%= daily_menu.pricings.find_by(course: course).final_price %> / 
+                  <% if course.type == 'PortionBased' %>
+                    1 Portion
+                  <% else %>
+                    <%= course.measurement.quantity%> <%= course.measurement.unit%> 
+                  <% end %>
+                 </p>
               </div>
             <% end %>
             <%= link_to 'Edit daily_menu', edit_daily_menu_path(daily_menu) %>

@@ -30,7 +30,11 @@ $( document ).on('turbolinks:load', function() {
 
   // Show suggested price for chosen course during daily menu creation
   $('.daily-menu-courses-dropdown').change(function(){
-    $('#dropdown-' + $(this).data('category-id')).text($(this).val());
+    var quantity = $(this).children('option:selected').data('quantity') + $(this).children('option:selected').data('unit');
+    var selected_course = $(this).children('option:selected').val();
+    console.log(selected_course)
+    $('.pricing-course-' + $(this).data('category-id')).val(selected_course);
+    $('#dropdown-' + $(this).data('category-id')).text(quantity);
   });
 
 });

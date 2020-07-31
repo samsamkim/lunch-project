@@ -2,13 +2,12 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   def index
-    @courses = Course.includes(:category).all
+    @courses = Course.includes(:category, :measurement).all
   end
 
   def new
     @course = Course.new
     @course.build_measurement
-
   end
 
   def create
@@ -21,7 +20,7 @@ class CoursesController < ApplicationController
   end
 
   def edit
-    @course.build_measurement if @course.build_measurement.nil?
+    # @course.build_measurement if @course.build_measurement.nil?
   end
 
   def update

@@ -11,7 +11,9 @@
           <div class='card-text'>
             <p>Description: <%= course.description %> </p>
             <p>Category: <%= course.category.name %> </p>
-            <p>Final Price: $<%= course.final_price %> </p>
+            <% if course.measurement.present? %>
+              <p>Quantity: <%= course.measurement.quantity %> <%= course.measurement.unit %> </p>
+            <% end %>
             <%= link_to 'Edit course', edit_course_path(course) %>
             <%= link_to 'Delete course', course_path(course), method: :delete %>
           </div>

@@ -9,6 +9,7 @@ class DailyMenusController < ApplicationController
 
   def new
     @daily_menu = DailyMenu.new
+    @daily_menu.pricings.build
   end
 
   def create
@@ -39,7 +40,7 @@ class DailyMenusController < ApplicationController
   private
 
   def set_categories
-    @categories = Category.includes(:courses).all
+    @categories = Category.includes(:courses,{courses: :measurement}).all
   end
 
   def set_daily_menu
@@ -47,7 +48,7 @@ class DailyMenusController < ApplicationController
   end
 
   def daily_menu_params
-    params.require(:daily_menu).permit(:date, :price, course_ids: [])
+    params.require(:daily_menu).permit(:date, :price, course_ids: [], pricings_attributes: [:final_price, :course_id])
   end
   
 end
